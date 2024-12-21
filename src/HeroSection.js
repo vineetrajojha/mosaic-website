@@ -54,7 +54,7 @@ const HeroSection = () => {
       <section id="home" className="hero-section">
         <div className="image-section">
           <div className="hero-content">
-          <h1>Mosaic</h1>
+          <img src="mosaic.png" alt="Logo" class="hero-logo"/>
             <h2 id="dates">30th January, 31st January & 1st February 2025</h2>
             <div id="countdown-timer">
               {timeLeft ? (
@@ -174,35 +174,25 @@ const HeroSection = () => {
         </div>
       ))}
     </div>
-    <button className="arrow-btn left" onClick={() => scrollToEvent('left')}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-left">
-        <path d="m15 18-6-6 6-6"/>
-      </svg>
-    </button>
-    <button className="arrow-btn right" onClick={() => scrollToEvent('right')}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-right">
-        <path d="m9 18 6-6-6-6"/>
-      </svg>
-    </button>
   </div>
 </section>
 
-      <section id="about1" className="about-section1">
-  <h2>About IILM</h2>
-  <p>
-  Established in 1993 under the visionary aegis of the Ram Krishan & Sons Charitable Trust, <br/> IILM stands tall with over 28 years of excellence in nurturing future leaders, entrepreneurs, and changemakers.<br/>  Recognized as a distinguished university in the Delhi NCR region, IILM combines a legacy of academic brilliance with an unwavering commitment to innovation and inclusivity.<br/> 
-  <br/>
-  In 2022, IILM was reimagined under the Uttar Pradesh Private University (Amendment) Act with a bold vision: to be a Global, Inclusive, and Responsible institution.<br/>  Anchored in cutting-edge fields like Computer Science and Engineering, <br/> Technology, Innovation, and Entrepreneurship, IILM empowers students to navigate and lead in a rapidly transforming world.
-  <br/>
-  </p>
-  <p id="p2">
-  Located at 16-18 Knowledge Park II, Greater Noida, our sprawling 26-acre campus is a hub of learning and inspiration,<br/>  equipped with state-of-the-art facilities that redefine the educational experience.<br/>  With safe and secure campuses also in New Delhi and Gurgaon, IILM offers students the perfect balance of world-class education, convenience, and community.
-  <br/>
-  <br/> 
-  For more information<br/> <br/> 
-  <a href="https://iilm.ac.in/about/" class="a1">Visit IILM About Page</a>
-  </p>
+<section>
+<div class="gallery-container">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+      <div class="photo small"></div>
+      <div class="photo large"></div>
+      <div class="photo medium"></div>
+      <div class="photo tall"></div>
+      <div class="photo small"></div>
+      <div class="photo wide"></div>
+      <div class="photo wide2"></div>
+    </div>
+  </div>
+
 </section>
+
     </div>
   );
 };

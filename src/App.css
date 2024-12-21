@@ -4,17 +4,53 @@ body {
   background-position: top left;
   background-repeat: repeat;
   margin: 0;
+  overflow-x: hidden;
   
 }
 
-.image-section {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0.9;
+html {
+  scroll-behavior: smooth;
 }
+
+.hero {
+  display: flex;
+  justify-content: center; /* Horizontally center the logo */
+  align-items: center; /* Vertically center the logo */
+  height: 100vh; /* Make the hero section take up the entire viewport height */
+  background-color: #f0f0f0; /* Background color */
+  position: relative;
+}
+
+@keyframes smooth-glow3 {
+  0% {
+    opacity: 0.8;
+    filter: blur(0.5px); /* Apply blur to the image */
+    text-shadow: 0 0 5px yellow, 0 0 10px yellow, 0 0 15px yellow; /* Yellow glow for text */
+  }
+  50% {
+    opacity: 1;
+    filter: blur(1px); /* Stronger blur effect */
+    text-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow; /* Stronger yellow glow */
+  }
+  100% {
+    opacity: 0.8;
+    filter: blur(0.5px); /* Return to initial blur */
+    text-shadow: 0 0 5px yellow, 0 0 10px yellow, 0 0 15px yellow; /* Return to initial yellow glow */
+  }
+}
+
+.hero-logo {
+  max-width: 80%; /* Ensure the logo scales within the hero section */
+  height: auto; /* Maintain aspect ratio */
+  animation: smooth-glow3 2s infinite;
+  text-align: center;
+  transition: opacity 0.5s ease-in-out;
+  position: relative; /* Allows additional positioning tweaks */
+  top: -150px; /* Adjust this to position it vertically */
+  left: 0; /* Adjust this to position it horizontally */
+}
+
+
 
 header {
   position: fixed;
@@ -33,7 +69,7 @@ nav {
   justify-content: center;
   font-size: 2.2rem;
   align-items: center;
-  width: 52%;
+  width: 70%;
   height: 70px;
   padding: 0 10px;
   margin: 20px auto;
@@ -92,6 +128,7 @@ nav {
 }
 
 .hero-content {
+  padding-top: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -155,20 +192,26 @@ nav {
   border-radius: 20px;
   transition: background-color 0.3s, transform 0.3s;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: overlay;
   cursor: pointer;
   box-sizing: border-box;
   padding: 20px;
-  animation: smooth-glow2 1s infinite;
+  animation: smooth-glow 1s infinite;
   -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+  
+  /* Adding the background image */
+  background-image: url('');
+  background-size: contain;        /* Ensures the image covers the entire box */
+  background-position: center;    /* Centers the image */
+  background-repeat: repeat;   /* Prevents the image from repeating */
 }
+
 
 .hero-content .btn {
   margin-top: 30px;
   padding: 20px 40px;
   font-size: 2.2em;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(127, 125, 64, 0.915);
   color: white;
   border: none;
   border-radius: 20px;
@@ -263,9 +306,15 @@ nav {
   display: flex;
   padding: 20px;
   scroll-snap-type: x mandatory;
-  overflow-x: hidden; /* Hide horizontal scroll */
+  overflow-x: auto; /* Enable horizontal scroll */
   position: relative;
   gap: 20px; /* Space between cards */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+
+.events-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }
 
 .events-container .event {
@@ -286,19 +335,41 @@ nav {
   border-style: none;
   background-size: cover;  /* Ensures the background image covers the entire box */
   background-position: center;  /* Centers the image within the box */
-  background-blend-mode:overlay;
+  background-blend-mode: overlay;
   background-repeat: no-repeat;
 }
 
 .events-container .event:hover {
-  transform: scale(1.05);
+  transform: scale(1.10);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.events-container .event .event-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.events-container .event:hover .event-details {
+  opacity: 1;
 }
 
 .events-slider {
   position: relative;
   width: 100%;
-  overflow: hidden; /* Hide overflow to keep the slider within bounds */
+  overflow: hidden; /* Keeps the slider content within bounds */
 }
 
 .arrow-btn {
@@ -541,4 +612,60 @@ nav {
 
 .a1:hover {
   color: lightgray; /* Optional: Changes color on hover */
+}
+
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 160vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Adjust column count as needed */
+  grid-auto-rows: 120px; /* Default row height */
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+  flex-grow: 1;
+}
+
+/* Photo styles with varying sizes */
+.photo {
+  border-radius: 10px;
+  background-image: url('bg3.jpg');
+  
+}
+
+.photo.small {
+  grid-column: span 2;
+  grid-row: span 3;
+}
+
+.photo.medium {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.photo.large {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.photo.tall {
+  grid-column: span 2;
+  grid-row: span 3;
+}
+
+.photo.wide {
+  grid-column: span 2;
+  grid-row: span 4;
+}
+
+.photo.wide2 {
+  grid-column: span 2;
+  grid-row: span 3;
 }
